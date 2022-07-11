@@ -32,6 +32,12 @@ public class DemoWebShopTest{
         cmd.click(By.xpath("//span[ text()='Shopping cart']"));
         WebElement simpleDesk = driver.findElement(By.xpath("//td//a[text()='Build your own cheap computer']"));
         Assert.assertTrue(simpleDesk.isDisplayed());
+        cmd.click(By.xpath("//a[text()='Edit']"));
+        cmd.findElement(By.id("addtocart_72_EnteredQuantity")).clear();
+        cmd.click(By.xpath("//input[@value='Update']"));
+        cmd.click(By.xpath("//span[ text()='Shopping cart']"));
+        WebElement cartEmptyMessage = cmd.findElement(By.xpath("//div[@class='order-summary-content']"));
+        Assert.assertTrue(cartEmptyMessage.isDisplayed());
         cmd.click(By.xpath("//li//a[@class='ico-logout']"));
         cmd.quitBrowser();
     }
