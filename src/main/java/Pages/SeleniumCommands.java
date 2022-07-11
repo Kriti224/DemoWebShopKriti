@@ -54,6 +54,7 @@ public  class SeleniumCommands {
 
     public void quitBrowser()
     {
+        driver.close();
         driver.quit();
     }
 }

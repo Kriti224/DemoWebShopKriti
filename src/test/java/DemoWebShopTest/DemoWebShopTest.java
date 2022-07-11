@@ -33,7 +33,6 @@ public class DemoWebShopTest{
         WebElement simpleDesk = driver.findElement(By.xpath("//td//a[text()='Build your own cheap computer']"));
         Assert.assertTrue(simpleDesk.isDisplayed());
         cmd.click(By.xpath("//li//a[@class='ico-logout']"));
-        driver.close();
-        driver.quit();
+        cmd.quitBrowser();
     }
 }
