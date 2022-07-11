@@ -17,7 +17,7 @@ public class DemoWebShopTest{
     public void loginAndPerformTest(){
         WebDriverManager.chromedriver().setup();
         WebDriver driver=new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         SeleniumCommands cmd = new SeleniumCommands(driver);
 
         cmd.navigateToUrl("http://demowebshop.tricentis.com/");
@@ -29,8 +29,9 @@ public class DemoWebShopTest{
         cmd.click(By.xpath("//a[@title='Show products in category Desktops']"));
         cmd.click(By.xpath("//a[text()='Build your own cheap computer']/ancestor::div[@class='product-item']//input[@value='Add to cart']"));
         cmd.click(By.id("add-to-cart-button-72"));
-        WebElement simpleDesk = driver.findElement(By.xpath("//a[text()='Build your own cheap computer']/ancestor::div[@class='product-item']"));
-        Assert.assertEquals(true,simpleDesk.isDisplayed());
+        cmd.click(By.xpath("//span[ text()='Shopping cart']"));
+        WebElement simpleDesk = driver.findElement(By.xpath("//td//a[text()='Build your own cheap computer']"));
+        Assert.assertTrue(simpleDesk.isDisplayed());
         cmd.click(By.xpath("//li//a[@class='ico-logout']"));
         driver.close();
         driver.quit();

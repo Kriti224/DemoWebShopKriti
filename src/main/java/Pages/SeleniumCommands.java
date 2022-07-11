@@ -23,7 +23,7 @@ public  class SeleniumCommands {
 
     public WebElement findElement(By by){
 
-        WebDriverWait wait = new WebDriverWait(driver,5);
+        WebDriverWait wait = new WebDriverWait(driver,10);
         return wait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
